@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package asr;
+
+import "google/protobuf/duration.proto";
+
+// Сервис распознавания речи
+service SttService {
+  // Функция запроса списка поддерживаемых моделей
+  rpc GetSupportedModelsInfo(Empty) returns (ModelsResponse);
+  // Функция поточного распознавания
+  rpc StreamingRecognize (stream StreamingRecognitionRequest) returns (stream StreamingRecognitionResponse);
+}
+
+// Ответ на запрос списка поддерживаемых моделей
+message ModelsResponse {
+  // Список поддерживаемых моделей
+  repeated Model models = 1;
+}
+
+// Информация о модели распознавания
+message Model {
+  // Имя модели
+  string name = 1;
+  // Поддерживаемая частота дискретизации аудио (в Герцах)
+  uint32 sample_rate_hertz = 2;
+}
+
+// Настройки распознавания
+message StreamingRecognitionRequest {
+  oneof streaming_request {
+    // Конфигурация распознавания
+    RecognitionConfig config = 1;
+    // Аудио для распознавания в формате PCM 16bit без WAV заголовка
+    bytes audio_content = 2;
+  }
+  // Возвращать только новые результаты распознавания
+  bool only_new = 3;
+}
+
+// Конфигурация распознавания
+message RecognitionConfig {
+  // Имя модели
+  string model = 1;
+  // Имя файла
+  string file_name = 2;
+  // Автоматическая расстановка знаков препинания
+  // На данный момент не поддерживается
+  bool enable_automatic_punctuation = 3;
+}
+
+// Информация о распознанной фразе
+message StreamingRecognitionResponse {
+  // Список распознанных слов
+  repeated SpeechRecognitionChunk chunks = 1;
+  // Уникальный идентификатор сессии
+  string session_id = 2;
+  // Распознанный текст
+  string text = 3;
+  // Флаг, указывающий что этот результат распознавания финальный и больше меняться не будет
+  // На данный момент не поддерживается
+  bool final = 4;
+}
+
+// Информация о распознанном слове
+message SpeechRecognitionChunk {
+  // Время начала слова внутри входного аудиопотока
+  google.protobuf.Duration start_time = 1;
+  // Время конца слова внутри входного аудиопотока
+  google.protobuf.Duration end_time = 2;
+  // Список альтернатив распознанных слов
+  repeated string words = 3;
+  // Акустическая достоверность слова
+  float confidence = 4;
+  // Громкость слова
+  float loudness = 5;
+  // Идентификатор диктора
+  // На данный момент не поддерживается
+  string speaker_id = 6;
+  // Порядковый номер фразы, к которой принадлежит слово
+  // На данный момент не поддерживается
+  uint32 phrase_id = 7;
+}
+
+message Empty {}
