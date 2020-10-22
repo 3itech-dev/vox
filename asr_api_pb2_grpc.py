@@ -20,6 +20,11 @@ class SttServiceStub(object):
                 request_serializer=asr__api__pb2.Empty.SerializeToString,
                 response_deserializer=asr__api__pb2.ModelsResponse.FromString,
                 )
+        self.Recognize = channel.unary_unary(
+                '/asr.SttService/Recognize',
+                request_serializer=asr__api__pb2.RecognitionRequest.SerializeToString,
+                response_deserializer=asr__api__pb2.RecognitionResponse.FromString,
+                )
         self.StreamingRecognize = channel.stream_stream(
                 '/asr.SttService/StreamingRecognize',
                 request_serializer=asr__api__pb2.StreamingRecognitionRequest.SerializeToString,
@@ -33,6 +38,13 @@ class SttServiceServicer(object):
 
     def GetSupportedModelsInfo(self, request, context):
         """Функция запроса списка поддерживаемых моделей
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Recognize(self, request, context):
+        """Функция для распознавания аудио целиком
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -52,6 +64,11 @@ def add_SttServiceServicer_to_server(servicer, server):
                     servicer.GetSupportedModelsInfo,
                     request_deserializer=asr__api__pb2.Empty.FromString,
                     response_serializer=asr__api__pb2.ModelsResponse.SerializeToString,
+            ),
+            'Recognize': grpc.unary_unary_rpc_method_handler(
+                    servicer.Recognize,
+                    request_deserializer=asr__api__pb2.RecognitionRequest.FromString,
+                    response_serializer=asr__api__pb2.RecognitionResponse.SerializeToString,
             ),
             'StreamingRecognize': grpc.stream_stream_rpc_method_handler(
                     servicer.StreamingRecognize,
@@ -83,6 +100,23 @@ class SttService(object):
         return grpc.experimental.unary_unary(request, target, '/asr.SttService/GetSupportedModelsInfo',
             asr__api__pb2.Empty.SerializeToString,
             asr__api__pb2.ModelsResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Recognize(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/asr.SttService/Recognize',
+            asr__api__pb2.RecognitionRequest.SerializeToString,
+            asr__api__pb2.RecognitionResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

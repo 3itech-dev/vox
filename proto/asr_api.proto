@@ -3,11 +3,20 @@ syntax = "proto3";
 package asr;
 
 import "google/protobuf/duration.proto";
+import "google/api/annotations.proto";
+
 
 // Сервис распознавания речи
 service SttService {
   // Функция запроса списка поддерживаемых моделей
   rpc GetSupportedModelsInfo(Empty) returns (ModelsResponse);
+  // Функция для распознавания аудио целиком
+  rpc Recognize(RecognitionRequest) returns (RecognitionResponse) {
+      option (google.api.http) = {
+        post: "/v1/stt:recognize"
+        body: "*"
+      };
+  }
   // Функция поточного распознавания
   rpc StreamingRecognize (stream StreamingRecognitionRequest) returns (stream StreamingRecognitionResponse);
 }
@@ -24,6 +33,14 @@ message Model {
   string name = 1;
   // Поддерживаемая частота дискретизации аудио (в Герцах)
   uint32 sample_rate_hertz = 2;
+}
+
+// Запрос на распознавание аудио целиком
+message RecognitionRequest {
+  // Конфигурация распознавания
+  RecognitionConfig config = 1;
+  // Аудио для распознавания.
+  bytes audio_content = 2;
 }
 
 // Настройки распознавания
@@ -47,6 +64,14 @@ message RecognitionConfig {
   // Автоматическая расстановка знаков препинания
   // На данный момент не поддерживается
   bool enable_automatic_punctuation = 3;
+}
+
+// Информация о распознанном аудио
+message RecognitionResponse {
+  // Список распознанных слов
+  repeated SpeechRecognitionChunk chunks = 1;
+  // Распознанный текст
+  string text = 2;
 }
 
 // Информация о распознанной фразе
