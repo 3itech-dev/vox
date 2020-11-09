@@ -12,7 +12,6 @@ _sym_db = _symbol_database.Default()
 
 
 from google.protobuf import duration_pb2 as google_dot_protobuf_dot_duration__pb2
-from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -21,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\rasr_api.proto\x12\x03\x61sr\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/api/annotations.proto\",\n\x0eModelsResponse\x12\x1a\n\x06models\x18\x01 \x03(\x0b\x32\n.asr.Model\"0\n\x05Model\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x19\n\x11sample_rate_hertz\x18\x02 \x01(\r\"S\n\x12RecognitionRequest\x12&\n\x06\x63onfig\x18\x01 \x01(\x0b\x32\x16.asr.RecognitionConfig\x12\x15\n\raudio_content\x18\x02 \x01(\x0c\"\x87\x01\n\x1bStreamingRecognitionRequest\x12(\n\x06\x63onfig\x18\x01 \x01(\x0b\x32\x16.asr.RecognitionConfigH\x00\x12\x17\n\raudio_content\x18\x02 \x01(\x0cH\x00\x12\x10\n\x08only_new\x18\x03 \x01(\x08\x42\x13\n\x11streaming_request\"[\n\x11RecognitionConfig\x12\r\n\x05model\x18\x01 \x01(\t\x12\x11\n\tfile_name\x18\x02 \x01(\t\x12$\n\x1c\x65nable_automatic_punctuation\x18\x03 \x01(\x08\"P\n\x13RecognitionResponse\x12+\n\x06\x63hunks\x18\x01 \x03(\x0b\x32\x1b.asr.SpeechRecognitionChunk\x12\x0c\n\x04text\x18\x02 \x01(\t\"|\n\x1cStreamingRecognitionResponse\x12+\n\x06\x63hunks\x18\x01 \x03(\x0b\x32\x1b.asr.SpeechRecognitionChunk\x12\x12\n\nsession_id\x18\x02 \x01(\t\x12\x0c\n\x04text\x18\x03 \x01(\t\x12\r\n\x05\x66inal\x18\x04 \x01(\x08\"\xd0\x01\n\x16SpeechRecognitionChunk\x12-\n\nstart_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12+\n\x08\x65nd_time\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\r\n\x05words\x18\x03 \x03(\t\x12\x12\n\nconfidence\x18\x04 \x01(\x02\x12\x10\n\x08loudness\x18\x05 \x01(\x02\x12\x12\n\nspeaker_id\x18\x06 \x01(\t\x12\x11\n\tphrase_id\x18\x07 \x01(\r\"\x07\n\x05\x45mpty2\x84\x02\n\nSttService\x12\x39\n\x16GetSupportedModelsInfo\x12\n.asr.Empty\x1a\x13.asr.ModelsResponse\x12\\\n\tRecognize\x12\x17.asr.RecognitionRequest\x1a\x18.asr.RecognitionResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\"\x11/v1/stt:recognize:\x01*\x12]\n\x12StreamingRecognize\x12 .asr.StreamingRecognitionRequest\x1a!.asr.StreamingRecognitionResponse(\x01\x30\x01\x62\x06proto3'
+  serialized_pb=b'\n\rasr_api.proto\x12\x03\x61sr\x1a\x1egoogle/protobuf/duration.proto\",\n\x0eModelsResponse\x12\x1a\n\x06models\x18\x01 \x03(\x0b\x32\n.asr.Model\"0\n\x05Model\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x19\n\x11sample_rate_hertz\x18\x02 \x01(\r\"S\n\x12RecognitionRequest\x12&\n\x06\x63onfig\x18\x01 \x01(\x0b\x32\x16.asr.RecognitionConfig\x12\x15\n\raudio_content\x18\x02 \x01(\x0c\"\x87\x01\n\x1bStreamingRecognitionRequest\x12(\n\x06\x63onfig\x18\x01 \x01(\x0b\x32\x16.asr.RecognitionConfigH\x00\x12\x17\n\raudio_content\x18\x02 \x01(\x0cH\x00\x12\x10\n\x08only_new\x18\x03 \x01(\x08\x42\x13\n\x11streaming_request\"[\n\x11RecognitionConfig\x12\r\n\x05model\x18\x01 \x01(\t\x12\x11\n\tfile_name\x18\x02 \x01(\t\x12$\n\x1c\x65nable_automatic_punctuation\x18\x03 \x01(\x08\"P\n\x13RecognitionResponse\x12+\n\x06\x63hunks\x18\x01 \x03(\x0b\x32\x1b.asr.SpeechRecognitionChunk\x12\x0c\n\x04text\x18\x02 \x01(\t\"|\n\x1cStreamingRecognitionResponse\x12+\n\x06\x63hunks\x18\x01 \x03(\x0b\x32\x1b.asr.SpeechRecognitionChunk\x12\x12\n\nsession_id\x18\x02 \x01(\t\x12\x0c\n\x04text\x18\x03 \x01(\t\x12\r\n\x05\x66inal\x18\x04 \x01(\x08\"\xd0\x01\n\x16SpeechRecognitionChunk\x12-\n\nstart_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12+\n\x08\x65nd_time\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\r\n\x05words\x18\x03 \x03(\t\x12\x12\n\nconfidence\x18\x04 \x01(\x02\x12\x10\n\x08loudness\x18\x05 \x01(\x02\x12\x12\n\nspeaker_id\x18\x06 \x01(\t\x12\x11\n\tphrase_id\x18\x07 \x01(\r\"\x07\n\x05\x45mpty2\xe6\x01\n\nSttService\x12\x39\n\x16GetSupportedModelsInfo\x12\n.asr.Empty\x1a\x13.asr.ModelsResponse\x12>\n\tRecognize\x12\x17.asr.RecognitionRequest\x1a\x18.asr.RecognitionResponse\x12]\n\x12StreamingRecognize\x12 .asr.StreamingRecognitionRequest\x1a!.asr.StreamingRecognitionResponse(\x01\x30\x01\x62\x06proto3'
   ,
-  dependencies=[google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,google_dot_api_dot_annotations__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,])
 
 
 
@@ -55,8 +54,8 @@ _MODELSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=84,
-  serialized_end=128,
+  serialized_start=54,
+  serialized_end=98,
 )
 
 
@@ -94,8 +93,8 @@ _MODEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=130,
-  serialized_end=178,
+  serialized_start=100,
+  serialized_end=148,
 )
 
 
@@ -133,8 +132,8 @@ _RECOGNITIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=180,
-  serialized_end=263,
+  serialized_start=150,
+  serialized_end=233,
 )
 
 
@@ -184,8 +183,8 @@ _STREAMINGRECOGNITIONREQUEST = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=266,
-  serialized_end=401,
+  serialized_start=236,
+  serialized_end=371,
 )
 
 
@@ -230,8 +229,8 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=403,
-  serialized_end=494,
+  serialized_start=373,
+  serialized_end=464,
 )
 
 
@@ -269,8 +268,8 @@ _RECOGNITIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=496,
-  serialized_end=576,
+  serialized_start=466,
+  serialized_end=546,
 )
 
 
@@ -322,8 +321,8 @@ _STREAMINGRECOGNITIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=578,
-  serialized_end=702,
+  serialized_start=548,
+  serialized_end=672,
 )
 
 
@@ -396,8 +395,8 @@ _SPEECHRECOGNITIONCHUNK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=705,
-  serialized_end=913,
+  serialized_start=675,
+  serialized_end=883,
 )
 
 
@@ -421,8 +420,8 @@ _EMPTY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=915,
-  serialized_end=922,
+  serialized_start=885,
+  serialized_end=892,
 )
 
 _MODELSRESPONSE.fields_by_name['models'].message_type = _MODEL
@@ -521,8 +520,8 @@ _STTSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=925,
-  serialized_end=1185,
+  serialized_start=895,
+  serialized_end=1125,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetSupportedModelsInfo',
@@ -541,7 +540,7 @@ _STTSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_RECOGNITIONREQUEST,
     output_type=_RECOGNITIONRESPONSE,
-    serialized_options=b'\202\323\344\223\002\026\"\021/v1/stt:recognize:\001*',
+    serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(

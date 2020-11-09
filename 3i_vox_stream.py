@@ -59,7 +59,7 @@ def print_streaming_recognition_responses(response):
 
 def streaming_recognize(model_name, sample_rate, file_path, only_new):
     cred = grpc.ssl_channel_credentials()
-    channel = grpc.secure_channel('stt.3i-vox.xyz:443', cred)
+    channel = grpc.secure_channel('stt.3i-vox.ru:443', cred)
     stub = asr_api_pb2_grpc.SttServiceStub(channel)
 
     model_response = get_supported_models(stub)

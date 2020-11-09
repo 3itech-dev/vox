@@ -3,7 +3,6 @@ syntax = "proto3";
 package asr;
 
 import "google/protobuf/duration.proto";
-import "google/api/annotations.proto";
 
 
 // Сервис распознавания речи
@@ -11,12 +10,7 @@ service SttService {
   // Функция запроса списка поддерживаемых моделей
   rpc GetSupportedModelsInfo(Empty) returns (ModelsResponse);
   // Функция для распознавания аудио целиком
-  rpc Recognize(RecognitionRequest) returns (RecognitionResponse) {
-      option (google.api.http) = {
-        post: "/v1/stt:recognize"
-        body: "*"
-      };
-  }
+  rpc Recognize(RecognitionRequest) returns (RecognitionResponse);
   // Функция поточного распознавания
   rpc StreamingRecognize (stream StreamingRecognitionRequest) returns (stream StreamingRecognitionResponse);
 }
