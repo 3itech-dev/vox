@@ -7,10 +7,12 @@ import asr_api_pb2
 
 CHUNK_MILLIS = 100  # send 100ms of file per request
 
+def create_auth_metadata(token):
+    return (("authorization", "Bearer {}".format(token)),)
 
-def get_supported_models(stub):
+def get_supported_models(stub, metadata):
     empty_rec = asr_api_pb2.Empty()
-    response = stub.GetSupportedModelsInfo(empty_rec)
+    response = stub.GetSupportedModelsInfo(empty_rec, metadata=metadata)
     return response
 
 
@@ -57,12 +59,13 @@ def print_streaming_recognition_responses(response):
         print(print_msg)
 
 
-def streaming_recognize(model_name, sample_rate, file_path, only_new):
+def streaming_recognize(model_name, sample_rate, file_path, only_new, token):
     cred = grpc.ssl_channel_credentials()
     channel = grpc.secure_channel('stt.3i-vox.ru:443', cred)
     stub = asr_api_pb2_grpc.SttServiceStub(channel)
 
-    model_response = get_supported_models(stub)
+    metadata = create_auth_metadata(token)
+    model_response = get_supported_models(stub, metadata)
 
     default_model = ""
     print('Supported models:')
@@ -81,7 +84,7 @@ def streaming_recognize(model_name, sample_rate, file_path, only_new):
     print('---------Start file processing---------')
     print('Model name:' + str(model_name))
 
-    responses = stub.StreamingRecognize(process_file_bytes(file_path, model_name, CHUNK_MILLIS, sample_rate, only_new))
+    responses = stub.StreamingRecognize(process_file_bytes(file_path, model_name, CHUNK_MILLIS, sample_rate, only_new), metadata=metadata)
 
     result_text = ""
     for response in responses:
@@ -102,8 +105,9 @@ if __name__ == '__main__':
     parser.add_argument('--rate', required=False, default=8000, help='Sample rate')
     parser.add_argument('--file', required=True, help='File name')
     parser.add_argument('--only_new', action='store_true', help='Receive only new results')
+    parser.add_argument('--token', required=True, help='OAuth access token')
 
 
     args = parser.parse_args()
 
-    streaming_recognize(args.model, args.rate, args.file, args.only_new)
+    streaming_recognize(args.model, args.rate, args.file, args.only_new, args.token)
