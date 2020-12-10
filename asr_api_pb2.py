@@ -16,11 +16,11 @@ from google.protobuf import duration_pb2 as google_dot_protobuf_dot_duration__pb
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='asr_api.proto',
-  package='asr',
+  package='vox.asr',
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\rasr_api.proto\x12\x03\x61sr\x1a\x1egoogle/protobuf/duration.proto\",\n\x0eModelsResponse\x12\x1a\n\x06models\x18\x01 \x03(\x0b\x32\n.asr.Model\"0\n\x05Model\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x19\n\x11sample_rate_hertz\x18\x02 \x01(\r\"S\n\x12RecognitionRequest\x12&\n\x06\x63onfig\x18\x01 \x01(\x0b\x32\x16.asr.RecognitionConfig\x12\x15\n\raudio_content\x18\x02 \x01(\x0c\"\x87\x01\n\x1bStreamingRecognitionRequest\x12(\n\x06\x63onfig\x18\x01 \x01(\x0b\x32\x16.asr.RecognitionConfigH\x00\x12\x17\n\raudio_content\x18\x02 \x01(\x0cH\x00\x12\x10\n\x08only_new\x18\x03 \x01(\x08\x42\x13\n\x11streaming_request\"[\n\x11RecognitionConfig\x12\r\n\x05model\x18\x01 \x01(\t\x12\x11\n\tfile_name\x18\x02 \x01(\t\x12$\n\x1c\x65nable_automatic_punctuation\x18\x03 \x01(\x08\"P\n\x13RecognitionResponse\x12+\n\x06\x63hunks\x18\x01 \x03(\x0b\x32\x1b.asr.SpeechRecognitionChunk\x12\x0c\n\x04text\x18\x02 \x01(\t\"|\n\x1cStreamingRecognitionResponse\x12+\n\x06\x63hunks\x18\x01 \x03(\x0b\x32\x1b.asr.SpeechRecognitionChunk\x12\x12\n\nsession_id\x18\x02 \x01(\t\x12\x0c\n\x04text\x18\x03 \x01(\t\x12\r\n\x05\x66inal\x18\x04 \x01(\x08\"\xd0\x01\n\x16SpeechRecognitionChunk\x12-\n\nstart_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12+\n\x08\x65nd_time\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\r\n\x05words\x18\x03 \x03(\t\x12\x12\n\nconfidence\x18\x04 \x01(\x02\x12\x10\n\x08loudness\x18\x05 \x01(\x02\x12\x12\n\nspeaker_id\x18\x06 \x01(\t\x12\x11\n\tphrase_id\x18\x07 \x01(\r\"\x07\n\x05\x45mpty2\xe6\x01\n\nSttService\x12\x39\n\x16GetSupportedModelsInfo\x12\n.asr.Empty\x1a\x13.asr.ModelsResponse\x12>\n\tRecognize\x12\x17.asr.RecognitionRequest\x1a\x18.asr.RecognitionResponse\x12]\n\x12StreamingRecognize\x12 .asr.StreamingRecognitionRequest\x1a!.asr.StreamingRecognitionResponse(\x01\x30\x01\x62\x06proto3'
+  serialized_pb=b'\n\rasr_api.proto\x12\x07vox.asr\x1a\x1egoogle/protobuf/duration.proto\"0\n\x0eModelsResponse\x12\x1e\n\x06models\x18\x01 \x03(\x0b\x32\x0e.vox.asr.Model\"0\n\x05Model\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x19\n\x11sample_rate_hertz\x18\x02 \x01(\r\"W\n\x12RecognitionRequest\x12*\n\x06\x63onfig\x18\x01 \x01(\x0b\x32\x1a.vox.asr.RecognitionConfig\x12\x15\n\raudio_content\x18\x02 \x01(\x0c\"\x8b\x01\n\x1bStreamingRecognitionRequest\x12,\n\x06\x63onfig\x18\x01 \x01(\x0b\x32\x1a.vox.asr.RecognitionConfigH\x00\x12\x17\n\raudio_content\x18\x02 \x01(\x0cH\x00\x12\x10\n\x08only_new\x18\x03 \x01(\x08\x42\x13\n\x11streaming_request\"[\n\x11RecognitionConfig\x12\r\n\x05model\x18\x01 \x01(\t\x12\x11\n\tfile_name\x18\x02 \x01(\t\x12$\n\x1c\x65nable_automatic_punctuation\x18\x03 \x01(\x08\"T\n\x13RecognitionResponse\x12/\n\x06\x63hunks\x18\x01 \x03(\x0b\x32\x1f.vox.asr.SpeechRecognitionChunk\x12\x0c\n\x04text\x18\x02 \x01(\t\"\x80\x01\n\x1cStreamingRecognitionResponse\x12/\n\x06\x63hunks\x18\x01 \x03(\x0b\x32\x1f.vox.asr.SpeechRecognitionChunk\x12\x12\n\nsession_id\x18\x02 \x01(\t\x12\x0c\n\x04text\x18\x03 \x01(\t\x12\r\n\x05\x66inal\x18\x04 \x01(\x08\"\xd0\x01\n\x16SpeechRecognitionChunk\x12-\n\nstart_time\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12+\n\x08\x65nd_time\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\r\n\x05words\x18\x03 \x03(\t\x12\x12\n\nconfidence\x18\x04 \x01(\x02\x12\x10\n\x08loudness\x18\x05 \x01(\x02\x12\x12\n\nspeaker_id\x18\x06 \x01(\t\x12\x11\n\tphrase_id\x18\x07 \x01(\r\"\x07\n\x05\x45mpty2\xfe\x01\n\nSttService\x12\x41\n\x16GetSupportedModelsInfo\x12\x0e.vox.asr.Empty\x1a\x17.vox.asr.ModelsResponse\x12\x46\n\tRecognize\x12\x1b.vox.asr.RecognitionRequest\x1a\x1c.vox.asr.RecognitionResponse\x12\x65\n\x12StreamingRecognize\x12$.vox.asr.StreamingRecognitionRequest\x1a%.vox.asr.StreamingRecognitionResponse(\x01\x30\x01\x62\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,])
 
@@ -29,14 +29,14 @@ DESCRIPTOR = _descriptor.FileDescriptor(
 
 _MODELSRESPONSE = _descriptor.Descriptor(
   name='ModelsResponse',
-  full_name='asr.ModelsResponse',
+  full_name='vox.asr.ModelsResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='models', full_name='asr.ModelsResponse.models', index=0,
+      name='models', full_name='vox.asr.ModelsResponse.models', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -54,28 +54,28 @@ _MODELSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=54,
-  serialized_end=98,
+  serialized_start=58,
+  serialized_end=106,
 )
 
 
 _MODEL = _descriptor.Descriptor(
   name='Model',
-  full_name='asr.Model',
+  full_name='vox.asr.Model',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='asr.Model.name', index=0,
+      name='name', full_name='vox.asr.Model.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='sample_rate_hertz', full_name='asr.Model.sample_rate_hertz', index=1,
+      name='sample_rate_hertz', full_name='vox.asr.Model.sample_rate_hertz', index=1,
       number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -93,28 +93,28 @@ _MODEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=100,
-  serialized_end=148,
+  serialized_start=108,
+  serialized_end=156,
 )
 
 
 _RECOGNITIONREQUEST = _descriptor.Descriptor(
   name='RecognitionRequest',
-  full_name='asr.RecognitionRequest',
+  full_name='vox.asr.RecognitionRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='config', full_name='asr.RecognitionRequest.config', index=0,
+      name='config', full_name='vox.asr.RecognitionRequest.config', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='audio_content', full_name='asr.RecognitionRequest.audio_content', index=1,
+      name='audio_content', full_name='vox.asr.RecognitionRequest.audio_content', index=1,
       number=2, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=b"",
       message_type=None, enum_type=None, containing_type=None,
@@ -132,35 +132,35 @@ _RECOGNITIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=150,
-  serialized_end=233,
+  serialized_start=158,
+  serialized_end=245,
 )
 
 
 _STREAMINGRECOGNITIONREQUEST = _descriptor.Descriptor(
   name='StreamingRecognitionRequest',
-  full_name='asr.StreamingRecognitionRequest',
+  full_name='vox.asr.StreamingRecognitionRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='config', full_name='asr.StreamingRecognitionRequest.config', index=0,
+      name='config', full_name='vox.asr.StreamingRecognitionRequest.config', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='audio_content', full_name='asr.StreamingRecognitionRequest.audio_content', index=1,
+      name='audio_content', full_name='vox.asr.StreamingRecognitionRequest.audio_content', index=1,
       number=2, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=b"",
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='only_new', full_name='asr.StreamingRecognitionRequest.only_new', index=2,
+      name='only_new', full_name='vox.asr.StreamingRecognitionRequest.only_new', index=2,
       number=3, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
@@ -178,40 +178,40 @@ _STREAMINGRECOGNITIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
     _descriptor.OneofDescriptor(
-      name='streaming_request', full_name='asr.StreamingRecognitionRequest.streaming_request',
+      name='streaming_request', full_name='vox.asr.StreamingRecognitionRequest.streaming_request',
       index=0, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=236,
-  serialized_end=371,
+  serialized_start=248,
+  serialized_end=387,
 )
 
 
 _RECOGNITIONCONFIG = _descriptor.Descriptor(
   name='RecognitionConfig',
-  full_name='asr.RecognitionConfig',
+  full_name='vox.asr.RecognitionConfig',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='model', full_name='asr.RecognitionConfig.model', index=0,
+      name='model', full_name='vox.asr.RecognitionConfig.model', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='file_name', full_name='asr.RecognitionConfig.file_name', index=1,
+      name='file_name', full_name='vox.asr.RecognitionConfig.file_name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='enable_automatic_punctuation', full_name='asr.RecognitionConfig.enable_automatic_punctuation', index=2,
+      name='enable_automatic_punctuation', full_name='vox.asr.RecognitionConfig.enable_automatic_punctuation', index=2,
       number=3, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
@@ -229,28 +229,28 @@ _RECOGNITIONCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=373,
-  serialized_end=464,
+  serialized_start=389,
+  serialized_end=480,
 )
 
 
 _RECOGNITIONRESPONSE = _descriptor.Descriptor(
   name='RecognitionResponse',
-  full_name='asr.RecognitionResponse',
+  full_name='vox.asr.RecognitionResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='chunks', full_name='asr.RecognitionResponse.chunks', index=0,
+      name='chunks', full_name='vox.asr.RecognitionResponse.chunks', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='text', full_name='asr.RecognitionResponse.text', index=1,
+      name='text', full_name='vox.asr.RecognitionResponse.text', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -268,42 +268,42 @@ _RECOGNITIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=466,
-  serialized_end=546,
+  serialized_start=482,
+  serialized_end=566,
 )
 
 
 _STREAMINGRECOGNITIONRESPONSE = _descriptor.Descriptor(
   name='StreamingRecognitionResponse',
-  full_name='asr.StreamingRecognitionResponse',
+  full_name='vox.asr.StreamingRecognitionResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='chunks', full_name='asr.StreamingRecognitionResponse.chunks', index=0,
+      name='chunks', full_name='vox.asr.StreamingRecognitionResponse.chunks', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='session_id', full_name='asr.StreamingRecognitionResponse.session_id', index=1,
+      name='session_id', full_name='vox.asr.StreamingRecognitionResponse.session_id', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='text', full_name='asr.StreamingRecognitionResponse.text', index=2,
+      name='text', full_name='vox.asr.StreamingRecognitionResponse.text', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='final', full_name='asr.StreamingRecognitionResponse.final', index=3,
+      name='final', full_name='vox.asr.StreamingRecognitionResponse.final', index=3,
       number=4, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
@@ -321,63 +321,63 @@ _STREAMINGRECOGNITIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=548,
-  serialized_end=672,
+  serialized_start=569,
+  serialized_end=697,
 )
 
 
 _SPEECHRECOGNITIONCHUNK = _descriptor.Descriptor(
   name='SpeechRecognitionChunk',
-  full_name='asr.SpeechRecognitionChunk',
+  full_name='vox.asr.SpeechRecognitionChunk',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='start_time', full_name='asr.SpeechRecognitionChunk.start_time', index=0,
+      name='start_time', full_name='vox.asr.SpeechRecognitionChunk.start_time', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='end_time', full_name='asr.SpeechRecognitionChunk.end_time', index=1,
+      name='end_time', full_name='vox.asr.SpeechRecognitionChunk.end_time', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='words', full_name='asr.SpeechRecognitionChunk.words', index=2,
+      name='words', full_name='vox.asr.SpeechRecognitionChunk.words', index=2,
       number=3, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='confidence', full_name='asr.SpeechRecognitionChunk.confidence', index=3,
+      name='confidence', full_name='vox.asr.SpeechRecognitionChunk.confidence', index=3,
       number=4, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='loudness', full_name='asr.SpeechRecognitionChunk.loudness', index=4,
+      name='loudness', full_name='vox.asr.SpeechRecognitionChunk.loudness', index=4,
       number=5, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='speaker_id', full_name='asr.SpeechRecognitionChunk.speaker_id', index=5,
+      name='speaker_id', full_name='vox.asr.SpeechRecognitionChunk.speaker_id', index=5,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='phrase_id', full_name='asr.SpeechRecognitionChunk.phrase_id', index=6,
+      name='phrase_id', full_name='vox.asr.SpeechRecognitionChunk.phrase_id', index=6,
       number=7, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -395,14 +395,14 @@ _SPEECHRECOGNITIONCHUNK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=675,
-  serialized_end=883,
+  serialized_start=700,
+  serialized_end=908,
 )
 
 
 _EMPTY = _descriptor.Descriptor(
   name='Empty',
-  full_name='asr.Empty',
+  full_name='vox.asr.Empty',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
@@ -420,8 +420,8 @@ _EMPTY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=885,
-  serialized_end=892,
+  serialized_start=910,
+  serialized_end=917,
 )
 
 _MODELSRESPONSE.fields_by_name['models'].message_type = _MODEL
@@ -451,63 +451,63 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 ModelsResponse = _reflection.GeneratedProtocolMessageType('ModelsResponse', (_message.Message,), {
   'DESCRIPTOR' : _MODELSRESPONSE,
   '__module__' : 'asr_api_pb2'
-  # @@protoc_insertion_point(class_scope:asr.ModelsResponse)
+  # @@protoc_insertion_point(class_scope:vox.asr.ModelsResponse)
   })
 _sym_db.RegisterMessage(ModelsResponse)
 
 Model = _reflection.GeneratedProtocolMessageType('Model', (_message.Message,), {
   'DESCRIPTOR' : _MODEL,
   '__module__' : 'asr_api_pb2'
-  # @@protoc_insertion_point(class_scope:asr.Model)
+  # @@protoc_insertion_point(class_scope:vox.asr.Model)
   })
 _sym_db.RegisterMessage(Model)
 
 RecognitionRequest = _reflection.GeneratedProtocolMessageType('RecognitionRequest', (_message.Message,), {
   'DESCRIPTOR' : _RECOGNITIONREQUEST,
   '__module__' : 'asr_api_pb2'
-  # @@protoc_insertion_point(class_scope:asr.RecognitionRequest)
+  # @@protoc_insertion_point(class_scope:vox.asr.RecognitionRequest)
   })
 _sym_db.RegisterMessage(RecognitionRequest)
 
 StreamingRecognitionRequest = _reflection.GeneratedProtocolMessageType('StreamingRecognitionRequest', (_message.Message,), {
   'DESCRIPTOR' : _STREAMINGRECOGNITIONREQUEST,
   '__module__' : 'asr_api_pb2'
-  # @@protoc_insertion_point(class_scope:asr.StreamingRecognitionRequest)
+  # @@protoc_insertion_point(class_scope:vox.asr.StreamingRecognitionRequest)
   })
 _sym_db.RegisterMessage(StreamingRecognitionRequest)
 
 RecognitionConfig = _reflection.GeneratedProtocolMessageType('RecognitionConfig', (_message.Message,), {
   'DESCRIPTOR' : _RECOGNITIONCONFIG,
   '__module__' : 'asr_api_pb2'
-  # @@protoc_insertion_point(class_scope:asr.RecognitionConfig)
+  # @@protoc_insertion_point(class_scope:vox.asr.RecognitionConfig)
   })
 _sym_db.RegisterMessage(RecognitionConfig)
 
 RecognitionResponse = _reflection.GeneratedProtocolMessageType('RecognitionResponse', (_message.Message,), {
   'DESCRIPTOR' : _RECOGNITIONRESPONSE,
   '__module__' : 'asr_api_pb2'
-  # @@protoc_insertion_point(class_scope:asr.RecognitionResponse)
+  # @@protoc_insertion_point(class_scope:vox.asr.RecognitionResponse)
   })
 _sym_db.RegisterMessage(RecognitionResponse)
 
 StreamingRecognitionResponse = _reflection.GeneratedProtocolMessageType('StreamingRecognitionResponse', (_message.Message,), {
   'DESCRIPTOR' : _STREAMINGRECOGNITIONRESPONSE,
   '__module__' : 'asr_api_pb2'
-  # @@protoc_insertion_point(class_scope:asr.StreamingRecognitionResponse)
+  # @@protoc_insertion_point(class_scope:vox.asr.StreamingRecognitionResponse)
   })
 _sym_db.RegisterMessage(StreamingRecognitionResponse)
 
 SpeechRecognitionChunk = _reflection.GeneratedProtocolMessageType('SpeechRecognitionChunk', (_message.Message,), {
   'DESCRIPTOR' : _SPEECHRECOGNITIONCHUNK,
   '__module__' : 'asr_api_pb2'
-  # @@protoc_insertion_point(class_scope:asr.SpeechRecognitionChunk)
+  # @@protoc_insertion_point(class_scope:vox.asr.SpeechRecognitionChunk)
   })
 _sym_db.RegisterMessage(SpeechRecognitionChunk)
 
 Empty = _reflection.GeneratedProtocolMessageType('Empty', (_message.Message,), {
   'DESCRIPTOR' : _EMPTY,
   '__module__' : 'asr_api_pb2'
-  # @@protoc_insertion_point(class_scope:asr.Empty)
+  # @@protoc_insertion_point(class_scope:vox.asr.Empty)
   })
 _sym_db.RegisterMessage(Empty)
 
@@ -515,17 +515,17 @@ _sym_db.RegisterMessage(Empty)
 
 _STTSERVICE = _descriptor.ServiceDescriptor(
   name='SttService',
-  full_name='asr.SttService',
+  full_name='vox.asr.SttService',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=895,
-  serialized_end=1125,
+  serialized_start=920,
+  serialized_end=1174,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetSupportedModelsInfo',
-    full_name='asr.SttService.GetSupportedModelsInfo',
+    full_name='vox.asr.SttService.GetSupportedModelsInfo',
     index=0,
     containing_service=None,
     input_type=_EMPTY,
@@ -535,7 +535,7 @@ _STTSERVICE = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='Recognize',
-    full_name='asr.SttService.Recognize',
+    full_name='vox.asr.SttService.Recognize',
     index=1,
     containing_service=None,
     input_type=_RECOGNITIONREQUEST,
@@ -545,7 +545,7 @@ _STTSERVICE = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='StreamingRecognize',
-    full_name='asr.SttService.StreamingRecognize',
+    full_name='vox.asr.SttService.StreamingRecognize',
     index=2,
     containing_service=None,
     input_type=_STREAMINGRECOGNITIONREQUEST,

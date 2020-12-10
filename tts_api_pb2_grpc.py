@@ -15,7 +15,7 @@ class TTSStub(object):
             channel: A grpc.Channel.
         """
         self.synthesize = channel.unary_unary(
-                '/tts.TTS/synthesize',
+                '/vox.tts.TTS/synthesize',
                 request_serializer=tts__api__pb2.SynthesizeRequest.SerializeToString,
                 response_deserializer=tts__api__pb2.SynthesizeResponse.FromString,
                 )
@@ -40,7 +40,7 @@ def add_TTSServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'tts.TTS', rpc_method_handlers)
+            'vox.tts.TTS', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -59,7 +59,7 @@ class TTS(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/tts.TTS/synthesize',
+        return grpc.experimental.unary_unary(request, target, '/vox.tts.TTS/synthesize',
             tts__api__pb2.SynthesizeRequest.SerializeToString,
             tts__api__pb2.SynthesizeResponse.FromString,
             options, channel_credentials,

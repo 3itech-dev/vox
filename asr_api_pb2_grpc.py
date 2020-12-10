@@ -16,17 +16,17 @@ class SttServiceStub(object):
             channel: A grpc.Channel.
         """
         self.GetSupportedModelsInfo = channel.unary_unary(
-                '/asr.SttService/GetSupportedModelsInfo',
+                '/vox.asr.SttService/GetSupportedModelsInfo',
                 request_serializer=asr__api__pb2.Empty.SerializeToString,
                 response_deserializer=asr__api__pb2.ModelsResponse.FromString,
                 )
         self.Recognize = channel.unary_unary(
-                '/asr.SttService/Recognize',
+                '/vox.asr.SttService/Recognize',
                 request_serializer=asr__api__pb2.RecognitionRequest.SerializeToString,
                 response_deserializer=asr__api__pb2.RecognitionResponse.FromString,
                 )
         self.StreamingRecognize = channel.stream_stream(
-                '/asr.SttService/StreamingRecognize',
+                '/vox.asr.SttService/StreamingRecognize',
                 request_serializer=asr__api__pb2.StreamingRecognitionRequest.SerializeToString,
                 response_deserializer=asr__api__pb2.StreamingRecognitionResponse.FromString,
                 )
@@ -77,7 +77,7 @@ def add_SttServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'asr.SttService', rpc_method_handlers)
+            'vox.asr.SttService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -97,7 +97,7 @@ class SttService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/asr.SttService/GetSupportedModelsInfo',
+        return grpc.experimental.unary_unary(request, target, '/vox.asr.SttService/GetSupportedModelsInfo',
             asr__api__pb2.Empty.SerializeToString,
             asr__api__pb2.ModelsResponse.FromString,
             options, channel_credentials,
@@ -114,7 +114,7 @@ class SttService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/asr.SttService/Recognize',
+        return grpc.experimental.unary_unary(request, target, '/vox.asr.SttService/Recognize',
             asr__api__pb2.RecognitionRequest.SerializeToString,
             asr__api__pb2.RecognitionResponse.FromString,
             options, channel_credentials,
@@ -131,7 +131,7 @@ class SttService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.stream_stream(request_iterator, target, '/asr.SttService/StreamingRecognize',
+        return grpc.experimental.stream_stream(request_iterator, target, '/vox.asr.SttService/StreamingRecognize',
             asr__api__pb2.StreamingRecognitionRequest.SerializeToString,
             asr__api__pb2.StreamingRecognitionResponse.FromString,
             options, channel_credentials,

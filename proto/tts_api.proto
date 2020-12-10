@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package tts;
+package vox.tts;
 
 message SynthesizeRequest {
   string model = 1;

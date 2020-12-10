@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package asr;
+package vox.asr;
 
 import "google/protobuf/duration.proto";
 
