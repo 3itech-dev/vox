@@ -16,19 +16,20 @@ def get_supported_models(stub, metadata):
     return response
 
 
-def is_model_supported(model_name, models):
+def find_supported_model(model_name, models):
     for model in models:
         if model.name == model_name:
-            return True
-    return False
+            return model
+    return None
 
 
-def process_file_bytes(file_path, model, millis, sample_rate=8000, only_new=True):
+def process_file_bytes(file_path, model, millis, sample_rate=8000, enable_automatic_punctuation = True, only_new=True):
     frames_count = int(millis * sample_rate / 1000)
     try:
         model_request = asr_api_pb2.StreamingRecognitionRequest()
         model_request.config.file_name = file_path
         model_request.config.model = model
+        model_request.config.enable_automatic_punctuation = enable_automatic_punctuation
         yield model_request
         wav_header_num_bytes = 44  # 44 байта - размер wav заголовка
         with open(file_path, 'rb') as f:
@@ -59,7 +60,7 @@ def print_streaming_recognition_responses(response):
         print(print_msg)
 
 
-def streaming_recognize(model_name, sample_rate, file_path, only_new, token):
+def streaming_recognize(model_name, file_path, enable_automatic_punctuation, only_new, token):
     cred = grpc.ssl_channel_credentials()
     channel = grpc.secure_channel('stt.3i-vox.ru:443', cred)
     stub = asr_api_pb2_grpc.SttServiceStub(channel)
@@ -68,6 +69,7 @@ def streaming_recognize(model_name, sample_rate, file_path, only_new, token):
     model_response = get_supported_models(stub, metadata)
 
     default_model = ""
+    model_sample_rate = 8000
     print('Supported models:')
     for model in model_response.models:
         print('-----------------model-----------------')
@@ -76,17 +78,22 @@ def streaming_recognize(model_name, sample_rate, file_path, only_new, token):
 
         if model.name.find('ru_telephony_') != -1 and model.name.rfind('_v2_8000') != -1:
             default_model = model.name
+            model_sample_rate = model.sample_rate_hertz
 
-    if not is_model_supported(model_name, model_response.models) and default_model:
+    found_model = find_supported_model(model_name, model_response.models)
+    if not found_model and default_model:
         print("Model with name", model_name, "isn't supported, change it to the default model", default_model)
         model_name = default_model
+    else:
+        model_sample_rate = found_model.sample_rate_hertz
 
     print('---------Start file processing---------')
-    print('Model name:' + str(model_name))
+    print('Model name:' + str(model_name) + " sample rate " + str(model_sample_rate))
 
-    responses = stub.StreamingRecognize(process_file_bytes(file_path, model_name, CHUNK_MILLIS, sample_rate, only_new), metadata=metadata)
+    responses = stub.StreamingRecognize(process_file_bytes(file_path, model_name, CHUNK_MILLIS, model_sample_rate, enable_automatic_punctuation, only_new), metadata=metadata)
 
     result_text = ""
+    last_message = ""
     for response in responses:
         if len(response.text) != 0:
             print("----------------message----------------")
@@ -94,7 +101,10 @@ def streaming_recognize(model_name, sample_rate, file_path, only_new, token):
                 result_text += response.text + " "
             else:
                 result_text = response.text
+            last_message = response.text
             print_streaming_recognition_responses(response)
+
+    result_text = last_message
 
     print("result text:", result_text)
 
@@ -102,12 +112,11 @@ def streaming_recognize(model_name, sample_rate, file_path, only_new, token):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--model', required=True, help='Model name')
-    parser.add_argument('--rate', required=False, default=8000, help='Sample rate')
     parser.add_argument('--file', required=True, help='File name')
     parser.add_argument('--only_new', action='store_true', help='Receive only new results')
-    parser.add_argument('--token', required=True, help='OAuth access token')
-
+    parser.add_argument('--token', required=False, help='OAuth access token')
+    parser.add_argument('--punctuation', action='store_true', help='Enable automatic punctuation')
 
     args = parser.parse_args()
 
-    streaming_recognize(args.model, args.rate, args.file, args.only_new, args.token)
+    streaming_recognize(args.model, args.file, args.punctuation, args.only_new, args.token)

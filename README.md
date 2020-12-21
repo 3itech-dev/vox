@@ -16,6 +16,20 @@ Response:\
 `<ACCESS_TOKEN>` - access token for further commands
 
 ### Run asr stream example
+
+```
+usage: 3i_vox_stream.py [-h] --model MODEL --file FILE [--only_new]
+                        [--token TOKEN] [--punctuation]
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --model MODEL  Model name
+  --file FILE    File name
+  --only_new     Receive only new results
+  --token TOKEN  OAuth access token
+  --punctuation  Enable automatic punctuation
+```
+
 ###### To receive only new chunks every request
 `python3 3i_vox_stream.py --token=<ACCESS_TOKEN> --model=ru_telephony_301120_v2_8000 --file=test_stream.wav --only_new`
 
