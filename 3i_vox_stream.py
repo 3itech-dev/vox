@@ -103,8 +103,8 @@ def streaming_recognize(model_name, file_path, enable_automatic_punctuation, onl
                 result_text = response.text
             last_message = response.text
             print_streaming_recognition_responses(response)
-
-    result_text = last_message
+    if enable_automatic_punctuation:
+        result_text = last_message
 
     print("result text:", result_text)
 
