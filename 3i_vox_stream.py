@@ -70,19 +70,21 @@ def streaming_recognize(model_name, file_path, enable_automatic_punctuation, onl
 
     default_model = ""
     model_sample_rate = 8000
+    if model_name.rfind('_16000'):
+        model_sample_rate = 16000
     print('Supported models:')
     for model in model_response.models:
         print('-----------------model-----------------')
         print("Model name: " + str(model.name))
         print("Model sample rate: " + str(model.sample_rate_hertz))
 
-        if model.name.find('ru_telephony_') != -1 and model.name.rfind('_v2_8000') != -1:
+        if model.name.find('ru_telephony_') != -1:
             default_model = model.name
             model_sample_rate = model.sample_rate_hertz
 
     found_model = find_supported_model(model_name, model_response.models)
     if not found_model and default_model:
-        print("Model with name", model_name, "isn't supported, change it to the default model", default_model)
+        print("Model with name", model_name, "isn't supported, change it to the default model", default_model, "model sample rate", model_sample_rate)
         model_name = default_model
     else:
         model_sample_rate = found_model.sample_rate_hertz
