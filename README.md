@@ -31,7 +31,7 @@ optional arguments:
 ```
 
 ###### To receive only new chunks every request
-`python3 3i_vox_stream.py --token=<ACCESS_TOKEN> --model=ru_telephony_2021.02.24_v4_8000 --file=test_stream.wav --only_new`
+`python3 3i_vox_stream.py --token=<ACCESS_TOKEN> --model=ru_telephony_2021.04.16_v4_8000 --file=test_stream.wav --only_new`
 
 ###### To receive all the chunks every request
-`python3 3i_vox_stream.py --token=<ACCESS_TOKEN> --model=ru_telephony_2021.02.24_v4_8000 --file=test_stream.wav`
+`python3 3i_vox_stream.py --token=<ACCESS_TOKEN> --model=ru_telephony_2021.04.16_v4_8000 --file=test_stream.wav`
