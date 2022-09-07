@@ -4,11 +4,13 @@
 `python3 -m pip install -r requirements.txt`
 
 ###### Generate access_token at 3i-vox.ru
-Request:\
-`curl -X POST "https://3i-vox.ru/oauth/token" \
+Request:
+```
+curl -X POST "https://3i-vox.ru/oauth/token" \
   -H "Content-Type: application/json" \
-  -d '{"grant_type":"password","username":"<USERNAME>","password":"<PASSWORD>","client_id":"<CLIENT_ID>","client_secret":"<CLIENT_SECRET>"}'`\
-`<USERNAME>`, `<PASSWORD>` - your 3i-vox.ru login credentials.\
+  -d '{"grant_type":"password","username":"<USERNAME>","password":"<PASSWORD>","client_id":"<CLIENT_ID>","client_secret":"<CLIENT_SECRET>"}'
+```
+`<USERNAME>`, `<PASSWORD>` - your 3i-vox.ru login credentials.\  
 `<CLIENT_ID>`, `<CLIENT_SECRET>` - you can get in your account settings at 3i-vox.ru.
 
 Response:\
