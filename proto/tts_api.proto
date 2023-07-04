@@ -4,15 +4,46 @@ package vox.tts;
 
 message SynthesizeRequest {
   string model = 1;
-  string text = 2;
-  float speed = 3;
-  float tone = 4;
+  oneof utterance {
+    string text = 2;
+    string ssml = 11;
+  }
+  optional float speed = 3;
+  optional float tone = 4; //in progress
+  optional uint32 sample_rate = 5; //in progress
+  optional float loudness = 6;
+  optional string noise_type = 7;
+  optional uint32 noise_strength = 8;
+  optional string noise_strategy = 9;
+  optional bool save = 10;
 }
 
 message SynthesizeResponse {
   bytes audio_content = 1;
+  string id = 2;
 }
 
+message ModelInfo {
+  string name = 1;
+  string version = 2;
+  string language = 3;
+}
+
+message ServiceInfo {
+  repeated string models = 1;
+  map<string, ModelInfo> models_info = 2;
+}
+
+message Empty {}
+
+
 service TTS {
-    rpc synthesize(SynthesizeRequest) returns (SynthesizeResponse);
+  rpc GetInfo(Empty) returns (ServiceInfo);
+
+  rpc Synthesize(SynthesizeRequest) returns (SynthesizeResponse);
+
+  //deprecated
+  rpc synthesize(SynthesizeRequest) returns (SynthesizeResponse);
+  rpc get_info(Empty) returns (ServiceInfo);
+  rpc stream_synthesize(SynthesizeRequest) returns (stream SynthesizeResponse);
 }

@@ -20,7 +20,7 @@ Response:\
 ### Run asr stream example
 
 ```
-usage: 3i_vox_stream.py [-h] --model MODEL --file FILE [--only_new]
+usage: python 3i_vox_stream.py [-h] --model MODEL --file FILE [--only_new]
                         [--token TOKEN] [--punctuation]
 
 optional arguments:
@@ -37,3 +37,15 @@ optional arguments:
 
 ###### To receive all the chunks every request
 `python3 3i_vox_stream.py --token=<ACCESS_TOKEN> --model=ru_telephony_8000 --file=test_stream.wav`
+
+
+### Run tts example
+
+```
+usage: python 3i_vox_tts_grpc.py --model MODEL --text TEXT [--token TOKEN]
+
+Additional arguments:
+python 3i_vox_tts_grpc.py --help
+```
+
+Synthesised audio will be saved as test_tts.wav

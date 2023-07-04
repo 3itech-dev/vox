@@ -3,6 +3,7 @@
 # source: tts_api.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -13,106 +14,16 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-  name='tts_api.proto',
-  package='vox.tts',
-  syntax='proto3',
-  serialized_options=None,
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\rtts_api.proto\x12\x07vox.tts\"M\n\x11SynthesizeRequest\x12\r\n\x05model\x18\x01 \x01(\t\x12\x0c\n\x04text\x18\x02 \x01(\t\x12\r\n\x05speed\x18\x03 \x01(\x02\x12\x0c\n\x04tone\x18\x04 \x01(\x02\"+\n\x12SynthesizeResponse\x12\x15\n\raudio_content\x18\x01 \x01(\x0c\x32L\n\x03TTS\x12\x45\n\nsynthesize\x12\x1a.vox.tts.SynthesizeRequest\x1a\x1b.vox.tts.SynthesizeResponseb\x06proto3'
-)
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rtts_api.proto\x12\x07vox.tts\"\xfb\x02\n\x11SynthesizeRequest\x12\r\n\x05model\x18\x01 \x01(\t\x12\x0e\n\x04text\x18\x02 \x01(\tH\x00\x12\x0e\n\x04ssml\x18\x0b \x01(\tH\x00\x12\x12\n\x05speed\x18\x03 \x01(\x02H\x01\x88\x01\x01\x12\x11\n\x04tone\x18\x04 \x01(\x02H\x02\x88\x01\x01\x12\x18\n\x0bsample_rate\x18\x05 \x01(\rH\x03\x88\x01\x01\x12\x15\n\x08loudness\x18\x06 \x01(\x02H\x04\x88\x01\x01\x12\x17\n\nnoise_type\x18\x07 \x01(\tH\x05\x88\x01\x01\x12\x1b\n\x0enoise_strength\x18\x08 \x01(\rH\x06\x88\x01\x01\x12\x1b\n\x0enoise_strategy\x18\t \x01(\tH\x07\x88\x01\x01\x12\x11\n\x04save\x18\n \x01(\x08H\x08\x88\x01\x01\x42\x0b\n\tutteranceB\x08\n\x06_speedB\x07\n\x05_toneB\x0e\n\x0c_sample_rateB\x0b\n\t_loudnessB\r\n\x0b_noise_typeB\x11\n\x0f_noise_strengthB\x11\n\x0f_noise_strategyB\x07\n\x05_save\"7\n\x12SynthesizeResponse\x12\x15\n\raudio_content\x18\x01 \x01(\x0c\x12\n\n\x02id\x18\x02 \x01(\t\"<\n\tModelInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07version\x18\x02 \x01(\t\x12\x10\n\x08language\x18\x03 \x01(\t\"\x9f\x01\n\x0bServiceInfo\x12\x0e\n\x06models\x18\x01 \x03(\t\x12\x39\n\x0bmodels_info\x18\x02 \x03(\x0b\x32$.vox.tts.ServiceInfo.ModelsInfoEntry\x1a\x45\n\x0fModelsInfoEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12!\n\x05value\x18\x02 \x01(\x0b\x32\x12.vox.tts.ModelInfo:\x02\x38\x01\"\x07\n\x05\x45mpty2\xc6\x02\n\x03TTS\x12/\n\x07GetInfo\x12\x0e.vox.tts.Empty\x1a\x14.vox.tts.ServiceInfo\x12\x45\n\nSynthesize\x12\x1a.vox.tts.SynthesizeRequest\x1a\x1b.vox.tts.SynthesizeResponse\x12\x45\n\nsynthesize\x12\x1a.vox.tts.SynthesizeRequest\x1a\x1b.vox.tts.SynthesizeResponse\x12\x30\n\x08get_info\x12\x0e.vox.tts.Empty\x1a\x14.vox.tts.ServiceInfo\x12N\n\x11stream_synthesize\x12\x1a.vox.tts.SynthesizeRequest\x1a\x1b.vox.tts.SynthesizeResponse0\x01\x62\x06proto3')
 
 
 
-
-_SYNTHESIZEREQUEST = _descriptor.Descriptor(
-  name='SynthesizeRequest',
-  full_name='vox.tts.SynthesizeRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='model', full_name='vox.tts.SynthesizeRequest.model', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='text', full_name='vox.tts.SynthesizeRequest.text', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='speed', full_name='vox.tts.SynthesizeRequest.speed', index=2,
-      number=3, type=2, cpp_type=6, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='tone', full_name='vox.tts.SynthesizeRequest.tone', index=3,
-      number=4, type=2, cpp_type=6, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=26,
-  serialized_end=103,
-)
-
-
-_SYNTHESIZERESPONSE = _descriptor.Descriptor(
-  name='SynthesizeResponse',
-  full_name='vox.tts.SynthesizeResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='audio_content', full_name='vox.tts.SynthesizeResponse.audio_content', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=105,
-  serialized_end=148,
-)
-
-DESCRIPTOR.message_types_by_name['SynthesizeRequest'] = _SYNTHESIZEREQUEST
-DESCRIPTOR.message_types_by_name['SynthesizeResponse'] = _SYNTHESIZERESPONSE
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
+_SYNTHESIZEREQUEST = DESCRIPTOR.message_types_by_name['SynthesizeRequest']
+_SYNTHESIZERESPONSE = DESCRIPTOR.message_types_by_name['SynthesizeResponse']
+_MODELINFO = DESCRIPTOR.message_types_by_name['ModelInfo']
+_SERVICEINFO = DESCRIPTOR.message_types_by_name['ServiceInfo']
+_SERVICEINFO_MODELSINFOENTRY = _SERVICEINFO.nested_types_by_name['ModelsInfoEntry']
+_EMPTY = DESCRIPTOR.message_types_by_name['Empty']
 SynthesizeRequest = _reflection.GeneratedProtocolMessageType('SynthesizeRequest', (_message.Message,), {
   'DESCRIPTOR' : _SYNTHESIZEREQUEST,
   '__module__' : 'tts_api_pb2'
@@ -127,31 +38,53 @@ SynthesizeResponse = _reflection.GeneratedProtocolMessageType('SynthesizeRespons
   })
 _sym_db.RegisterMessage(SynthesizeResponse)
 
+ModelInfo = _reflection.GeneratedProtocolMessageType('ModelInfo', (_message.Message,), {
+  'DESCRIPTOR' : _MODELINFO,
+  '__module__' : 'tts_api_pb2'
+  # @@protoc_insertion_point(class_scope:vox.tts.ModelInfo)
+  })
+_sym_db.RegisterMessage(ModelInfo)
 
+ServiceInfo = _reflection.GeneratedProtocolMessageType('ServiceInfo', (_message.Message,), {
 
-_TTS = _descriptor.ServiceDescriptor(
-  name='TTS',
-  full_name='vox.tts.TTS',
-  file=DESCRIPTOR,
-  index=0,
-  serialized_options=None,
-  create_key=_descriptor._internal_create_key,
-  serialized_start=150,
-  serialized_end=226,
-  methods=[
-  _descriptor.MethodDescriptor(
-    name='synthesize',
-    full_name='vox.tts.TTS.synthesize',
-    index=0,
-    containing_service=None,
-    input_type=_SYNTHESIZEREQUEST,
-    output_type=_SYNTHESIZERESPONSE,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-])
-_sym_db.RegisterServiceDescriptor(_TTS)
+  'ModelsInfoEntry' : _reflection.GeneratedProtocolMessageType('ModelsInfoEntry', (_message.Message,), {
+    'DESCRIPTOR' : _SERVICEINFO_MODELSINFOENTRY,
+    '__module__' : 'tts_api_pb2'
+    # @@protoc_insertion_point(class_scope:vox.tts.ServiceInfo.ModelsInfoEntry)
+    })
+  ,
+  'DESCRIPTOR' : _SERVICEINFO,
+  '__module__' : 'tts_api_pb2'
+  # @@protoc_insertion_point(class_scope:vox.tts.ServiceInfo)
+  })
+_sym_db.RegisterMessage(ServiceInfo)
+_sym_db.RegisterMessage(ServiceInfo.ModelsInfoEntry)
 
-DESCRIPTOR.services_by_name['TTS'] = _TTS
+Empty = _reflection.GeneratedProtocolMessageType('Empty', (_message.Message,), {
+  'DESCRIPTOR' : _EMPTY,
+  '__module__' : 'tts_api_pb2'
+  # @@protoc_insertion_point(class_scope:vox.tts.Empty)
+  })
+_sym_db.RegisterMessage(Empty)
 
+_TTS = DESCRIPTOR.services_by_name['TTS']
+if _descriptor._USE_C_DESCRIPTORS == False:
+
+  DESCRIPTOR._options = None
+  _SERVICEINFO_MODELSINFOENTRY._options = None
+  _SERVICEINFO_MODELSINFOENTRY._serialized_options = b'8\001'
+  _SYNTHESIZEREQUEST._serialized_start=27
+  _SYNTHESIZEREQUEST._serialized_end=406
+  _SYNTHESIZERESPONSE._serialized_start=408
+  _SYNTHESIZERESPONSE._serialized_end=463
+  _MODELINFO._serialized_start=465
+  _MODELINFO._serialized_end=525
+  _SERVICEINFO._serialized_start=528
+  _SERVICEINFO._serialized_end=687
+  _SERVICEINFO_MODELSINFOENTRY._serialized_start=618
+  _SERVICEINFO_MODELSINFOENTRY._serialized_end=687
+  _EMPTY._serialized_start=689
+  _EMPTY._serialized_end=696
+  _TTS._serialized_start=699
+  _TTS._serialized_end=1025
 # @@protoc_insertion_point(module_scope)

@@ -14,8 +14,28 @@ class TTSStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.GetInfo = channel.unary_unary(
+                '/vox.tts.TTS/GetInfo',
+                request_serializer=tts__api__pb2.Empty.SerializeToString,
+                response_deserializer=tts__api__pb2.ServiceInfo.FromString,
+                )
+        self.Synthesize = channel.unary_unary(
+                '/vox.tts.TTS/Synthesize',
+                request_serializer=tts__api__pb2.SynthesizeRequest.SerializeToString,
+                response_deserializer=tts__api__pb2.SynthesizeResponse.FromString,
+                )
         self.synthesize = channel.unary_unary(
                 '/vox.tts.TTS/synthesize',
+                request_serializer=tts__api__pb2.SynthesizeRequest.SerializeToString,
+                response_deserializer=tts__api__pb2.SynthesizeResponse.FromString,
+                )
+        self.get_info = channel.unary_unary(
+                '/vox.tts.TTS/get_info',
+                request_serializer=tts__api__pb2.Empty.SerializeToString,
+                response_deserializer=tts__api__pb2.ServiceInfo.FromString,
+                )
+        self.stream_synthesize = channel.unary_stream(
+                '/vox.tts.TTS/stream_synthesize',
                 request_serializer=tts__api__pb2.SynthesizeRequest.SerializeToString,
                 response_deserializer=tts__api__pb2.SynthesizeResponse.FromString,
                 )
@@ -24,7 +44,32 @@ class TTSStub(object):
 class TTSServicer(object):
     """Missing associated documentation comment in .proto file."""
 
+    def GetInfo(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Synthesize(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def synthesize(self, request, context):
+        """deprecated
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def get_info(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def stream_synthesize(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -33,8 +78,28 @@ class TTSServicer(object):
 
 def add_TTSServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'GetInfo': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetInfo,
+                    request_deserializer=tts__api__pb2.Empty.FromString,
+                    response_serializer=tts__api__pb2.ServiceInfo.SerializeToString,
+            ),
+            'Synthesize': grpc.unary_unary_rpc_method_handler(
+                    servicer.Synthesize,
+                    request_deserializer=tts__api__pb2.SynthesizeRequest.FromString,
+                    response_serializer=tts__api__pb2.SynthesizeResponse.SerializeToString,
+            ),
             'synthesize': grpc.unary_unary_rpc_method_handler(
                     servicer.synthesize,
+                    request_deserializer=tts__api__pb2.SynthesizeRequest.FromString,
+                    response_serializer=tts__api__pb2.SynthesizeResponse.SerializeToString,
+            ),
+            'get_info': grpc.unary_unary_rpc_method_handler(
+                    servicer.get_info,
+                    request_deserializer=tts__api__pb2.Empty.FromString,
+                    response_serializer=tts__api__pb2.ServiceInfo.SerializeToString,
+            ),
+            'stream_synthesize': grpc.unary_stream_rpc_method_handler(
+                    servicer.stream_synthesize,
                     request_deserializer=tts__api__pb2.SynthesizeRequest.FromString,
                     response_serializer=tts__api__pb2.SynthesizeResponse.SerializeToString,
             ),
@@ -49,6 +114,40 @@ class TTS(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
+    def GetInfo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/vox.tts.TTS/GetInfo',
+            tts__api__pb2.Empty.SerializeToString,
+            tts__api__pb2.ServiceInfo.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Synthesize(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/vox.tts.TTS/Synthesize',
+            tts__api__pb2.SynthesizeRequest.SerializeToString,
+            tts__api__pb2.SynthesizeResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def synthesize(request,
             target,
             options=(),
@@ -60,6 +159,40 @@ class TTS(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/vox.tts.TTS/synthesize',
+            tts__api__pb2.SynthesizeRequest.SerializeToString,
+            tts__api__pb2.SynthesizeResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def get_info(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/vox.tts.TTS/get_info',
+            tts__api__pb2.Empty.SerializeToString,
+            tts__api__pb2.ServiceInfo.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def stream_synthesize(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/vox.tts.TTS/stream_synthesize',
             tts__api__pb2.SynthesizeRequest.SerializeToString,
             tts__api__pb2.SynthesizeResponse.FromString,
             options, channel_credentials,
