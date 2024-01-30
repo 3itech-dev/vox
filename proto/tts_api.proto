@@ -10,7 +10,7 @@ message SynthesizeRequest {
   }
   optional float speed = 3;
   optional float tone = 4; //in progress
-  optional uint32 sample_rate = 5; //in progress
+  optional uint32 sample_rate = 5;
   optional float loudness = 6;
   optional string noise_type = 7;
   optional uint32 noise_strength = 8;
